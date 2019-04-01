@@ -10,28 +10,14 @@
   },
   "autoload": {
     "psr-4": {
-      "HeimrichHannot\\TwigTemplatesBundle\\": "src/"
-    },
-    "classmap": [
-      "src/"
-    ],
-    "exclude-from-classmap": [
-      "src/Resources/contao/config/",
-      "src/Resources/contao/dca/",
-      "src/Resources/contao/languages/",
-      "src/Resources/contao/templates/"
-    ]
-  },
-  "autoload-dev": {
-    "psr-4": {
-      "HeimrichHannot\\TwigTemplatesBundle\\Test\\": "tests/"
+      "HeimrichHannot\\ContaoTwigTemplatesBootstrap3Bundle\\": "src/"
     }
   },
   "config": {
     "preferred-install": "dist"
   },
   "extra": {
-    "contao-manager-plugin": "HeimrichHannot\\TwigTemplatesBundle\\ContaoManager\\Plugin",
+    "contao-manager-plugin": "HeimrichHannot\\ContaoTwigTemplatesBootstrap3Bundle\\ContaoManager\\Plugin",
     "foxy": true
   }
 }
