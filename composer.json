@@ -1,0 +1,37 @@
+{
+  "name": "heimrichhannot/contao-twig-templates-bootstrap3-bundle",
+  "type": "contao-bundle",
+  "description": "Brings bootstrap 3 template to twig templates bundle",
+  "license": "LGPL-3.0-or-later",
+  "require": {
+    "php": "^7.1",
+    "contao/core-bundle": "^4.4",
+    "heimrichhannot/contao-twig-templates-bundle": "*"
+  },
+  "autoload": {
+    "psr-4": {
+      "HeimrichHannot\\TwigTemplatesBundle\\": "src/"
+    },
+    "classmap": [
+      "src/"
+    ],
+    "exclude-from-classmap": [
+      "src/Resources/contao/config/",
+      "src/Resources/contao/dca/",
+      "src/Resources/contao/languages/",
+      "src/Resources/contao/templates/"
+    ]
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "HeimrichHannot\\TwigTemplatesBundle\\Test\\": "tests/"
+    }
+  },
+  "config": {
+    "preferred-install": "dist"
+  },
+  "extra": {
+    "contao-manager-plugin": "HeimrichHannot\\TwigTemplatesBundle\\ContaoManager\\Plugin",
+    "foxy": true
+  }
+}
