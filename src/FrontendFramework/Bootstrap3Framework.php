@@ -47,11 +47,26 @@ class Bootstrap3Framework extends AbstractFrontendFramework
      */
     public function generate(string &$templateName, array &$templateData): void
     {
-        // TODO: Implement generate() method.
+        $this->prepareAccordeons($templateName, $templateData);
     }
 
     public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void
     {
         // TODO: Implement prepareData() method.
+    }
+
+    protected function prepareAccordeons(string &$templateName, array &$data)
+    {
+        // prepare template data for bootstrap
+        switch ($templateName) {
+            case 'ce_accordionSingle':
+                $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);
+                break;
+
+            case 'ce_accordionStart':
+            case 'ce_accordionStop':
+                $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
+                break;
+        }
     }
 }
