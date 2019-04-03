@@ -1,0 +1,62 @@
+{% extends '@ContaoTwigTemplates/forms/form_row_bs4.html.twig' %}
+
+{% set optionGroupClass = "checkbox-group ctrl_" ~ strId %}
+
+{% if arrOptions|length == 1 %}
+    {% set option = arrOptions[0] %}
+    {% set option = option|merge({label: strLabel}) %}
+
+    {% if arrConfiguration.mandatory|default(false) %}
+        {% set option = option|merge({label: option.label ~ '<span class="invisible">' ~ 'huh.twig.templates.label.mandatory'|trans ~ '</span><span class="mandatory">*</span>'}) %}
+    {% endif %}
+
+    {% set arrOptions = [option] %}
+{% endif %}
+
+{% block label %}
+    {% if(not arrConfiguration.hideLabel|default(false) and arrOptions|default([])|length > 1) %}
+    <label id="lbl_{{ strId }}" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
+        {% if arrConfiguration.mandatory|default(false) %}
+            <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
+            <span class="mandatory">*</span>
+        {% endif %}
+    </label>
+    {% endif %}
+{% endblock %}
+
+
+{% block field %}
+    <div class="{{ optionGroupClass }}">
+    {% for option in arrOptions %}
+        {% set counter = ( counter | default(0) ) + 1 %}
+        {% block option %}
+            {% if not arrConfiguration.inline|default(false) %}
+                <div class="checkbox">
+            {% endif %}
+                    <label class="{% if arrConfiguration.inline|default(false) %}checkbox-inline{% endif %}" for="opt_{{ strId }}_{{ counter }}">
+                        <input class="{% if(hasErrors|default(false)) %} is-invalid{% endif %}" name="{{ strName }}{% if arrConfiguration.multiple|default %}[]{% endif %}" type="checkbox" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %} {{ option.attributes }}>
+                        {{ option.label|raw }}
+                    </label>
+            {% if not arrConfiguration.inline|default(false) %}
+                </div>
+            {% endif %}
+
+            {% if loop.last and not arrConfiguration.inline|default(false)%}
+                {% if(hasErrors|default(false) and errorsAsString|default()) %}
+                    <div class="help-block">{{ errorsAsString|raw }}</div>
+                {% endif %}
+            {% endif %}
+
+
+        {% endblock %}
+    {% endfor %}
+    </div>
+{% endblock %}
+
+
+{% block feedback %}
+    {% if arrConfiguration.inline|default(false) %}
+        {% set formFeedbackClass = formFeedbackClass|merge(['d-block']) %}
+        {{ parent() }}
+    {% endif %}
+{% endblock %}

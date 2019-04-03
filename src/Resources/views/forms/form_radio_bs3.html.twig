@@ -20,7 +20,7 @@
             {% set counter = ( counter | default(0) ) + 1 %}
             {% block option %}
                 {% if not arrConfiguration.inline|default(false) %}
-                    <div class="checkbox">
+                    <div class="radio">
                 {% endif %}
                         <label class="{% if arrConfiguration.inline|default(false) %}radio-inline{% endif %}" for="opt_{{ strId }}_{{ counter }}">
                             <input class="{% if(hasErrors|default(false)) %} is-invalid{% endif %}" type="radio" name="{{ strName }}" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %}>
