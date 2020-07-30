@@ -1,0 +1,26 @@
+{% extends '@ContaoTwigTemplates/modules/mod_login.html.twig' %}
+
+{% block username %}
+    <div class="form-group widget widget-text">
+        <label for="username">{{ username }}</label>
+        <input type="text" name="username" id="username" class="text form-control" value="{{ value|default }}">
+    </div>
+{% endblock %}
+{% block password %}
+    <div class="form-group widget widget-password">
+        <label for="password">{{ password }}</label>
+        <input type="password" name="password" id="password" class="text password form-control" value="">
+    </div>
+{% endblock %}
+{% block autologin %}
+    <div class="checkbox widget widget-checkbox">
+        <label for="autologin">
+            <input type="checkbox" name="autologin" id="autologin" value="1" class="checkbox"> {{ autoLabel }}
+        </label>
+    </div>
+{% endblock %}
+{% block submit %}
+    <div class="widget widget-submit">
+        <button type="submit" class="submit btn btn-default">{{ slabel|default }}</button>
+    </div>
+{% endblock %}

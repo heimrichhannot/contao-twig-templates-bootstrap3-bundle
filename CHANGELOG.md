@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.0] - 2019-07-30
+- added mod_login_bs3 template
+- increased min twig templates bundle version to 1.2
+
 ## [0.1.2] - 2019-08-08
 
 - fixed search template
