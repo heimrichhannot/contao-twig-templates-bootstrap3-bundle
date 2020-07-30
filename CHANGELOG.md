@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.2.1] - 2019-07-30
+- added missing mod_login_bs3.html5 template
+
 ## [0.2.0] - 2019-07-30
 - added mod_login_bs3 template
 - increased min twig templates bundle version to 1.2
