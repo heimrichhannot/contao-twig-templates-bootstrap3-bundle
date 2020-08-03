@@ -6,7 +6,7 @@
     {% endif %}
 
     {% if message|default %}
-        <p class="tl_confirm">{{ message }}</p>
+        <div class="alert alert-warning" role="alert">{{ message }}</div>
     {% endif %}
 
     <form{{ action|default ? ' action="' ~ action ~ '"' }} id="{{ formId|default }}" method="post" enctype="{{ enctype|default }}">
@@ -16,9 +16,11 @@
             <div class="fields">
                 {{ fields|default|raw }}
             </div>
+            {% block submit %}
             <div class="widget widget-submit">
-                <button type="submit" class="submit">{{ slabel|default }}</button>
+                <button type="submit" class="submit btn btn-default">{{ slabel|default }}</button>
             </div>
+            {% endblock %}
         </div>
     </form>
 

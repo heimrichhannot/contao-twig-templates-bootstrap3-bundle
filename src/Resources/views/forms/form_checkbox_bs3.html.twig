@@ -7,7 +7,7 @@
     {% set option = option|merge({label: strLabel}) %}
 
     {% if arrConfiguration.mandatory|default(false) %}
-        {% set option = option|merge({label: option.label ~ '<span class="invisible">' ~ 'huh.twig.templates.label.mandatory'|trans ~ '</span><span class="mandatory">*</span>'}) %}
+        {% set option = option|merge({label: option.label ~ '<span class="sr-only">' ~ 'huh.twig.templates.label.mandatory'|trans ~ '</span><span class="mandatory">*</span>'}) %}
     {% endif %}
 
     {% set arrOptions = [option] %}
@@ -17,7 +17,7 @@
     {% if(not arrConfiguration.hideLabel|default(false) and arrOptions|default([])|length > 1) %}
     <label id="lbl_{{ strId }}" for="ctrl_{{ strId }}" class="control-label">{{ strLabel|raw }}
         {% if arrConfiguration.mandatory|default(false) %}
-            <span class="invisible">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
+            <span class="sr-only">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
             <span class="mandatory">*</span>
         {% endif %}
     </label>
