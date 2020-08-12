@@ -6,7 +6,7 @@
   "require": {
     "php": "^7.1",
     "contao/core-bundle": "^4.4",
-    "heimrichhannot/contao-twig-templates-bundle": "^1.2",
+    "heimrichhannot/contao-twig-templates-bundle": "^1.2|^2.0-beta",
     "heimrichhannot/contao-utils-bundle": "^2.101"
   },
   "autoload": {

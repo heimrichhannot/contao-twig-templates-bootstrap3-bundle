@@ -1,0 +1,23 @@
+{% set groupClass = groupClass|default(arrConfiguration.groupClass|default('form-group')) %}
+
+<div class="{{ strPrefix|default() }} {{ class|default }} {{ groupClass }}">
+  {% block label %}
+  {% endblock %}
+
+  {% block field %}
+  {% endblock %}
+
+  {% block explanation %}
+  {% endblock %}
+</div>
+
+<div class="{{ strPrefix|default() }} confirm {{ class|default }} {{ groupClass }}">
+  {% block label2 %}
+  {% endblock %}
+
+  {% block field2 %}
+  {% endblock %}
+
+  {% block explanation2 %}
+  {% endblock %}
+</div>

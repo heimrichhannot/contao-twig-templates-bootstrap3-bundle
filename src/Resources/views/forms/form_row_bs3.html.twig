@@ -24,6 +24,7 @@
     {% endif %}
 {% endif %}
 
+{% block formgroup %}
 <div class="{{ strName }} {{ groupClass }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
     {% block label %}
@@ -92,4 +93,6 @@
         </div>
     {% endblock %}
 </div>
+{% endblock %}
+
 

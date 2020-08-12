@@ -13,9 +13,10 @@ namespace HeimrichHannot\ContaoTwigTemplatesBootstrap3Bundle\FrontendFramework;
 
 
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework;
+use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
 use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
 
-class Bootstrap3Framework extends AbstractFrontendFramework
+class Bootstrap3Framework extends AbstractFrontendFramework implements FrontendFrameworkInterface
 {
 
     /**
@@ -29,6 +30,11 @@ class Bootstrap3Framework extends AbstractFrontendFramework
         return 'bs3';
     }
 
+    public static function getIdentifier(): string
+    {
+        return 'bs3';
+    }
+
     /**
      * Return the name of the framework. Can be an translation alias.
      *
@@ -36,7 +42,7 @@ class Bootstrap3Framework extends AbstractFrontendFramework
      */
     public function getName(): string
     {
-        return 'huh.twig_templates_bs3.framework.bs3';
+        return 'huh.twig.templates.framework.bs3';
     }
 
     /**
