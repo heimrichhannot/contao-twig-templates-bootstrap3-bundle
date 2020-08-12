@@ -1,6 +1,8 @@
 # Changelog
 
-## [0.3.0-DEV] - 2020-08-03
+## [0.3.0] - 2020-08-03
+- updated Bootstrap3Framework to implement FrontendFrameworkInterface 
+- bump minimum twig template bundle version to 1.4
 - added member_default_bs3 template
 - changed screenreader css class from invisible to sr-only (bootstrap 3 default)
 

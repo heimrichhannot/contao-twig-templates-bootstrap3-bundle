@@ -12,22 +12,25 @@
 namespace HeimrichHannot\ContaoTwigTemplatesBootstrap3Bundle\FrontendFramework;
 
 
-use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\AbstractFrontendFramework;
+use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
+use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
-use HeimrichHannot\TwigTemplatesBundle\Twig\AbstractTemplate;
+use HeimrichHannot\UtilsBundle\Accordion\AccordionUtil;
 
-class Bootstrap3Framework extends AbstractFrontendFramework implements FrontendFrameworkInterface
+class Bootstrap3Framework implements FrontendFrameworkInterface
 {
+    /**
+     * @var AccordionUtil
+     */
+    protected AccordionUtil $accordionUtil;
+
 
     /**
-     * Return the framework alias. Is used for template suffix and database identification.
-     * Example: bs4 for Bootstrap 4
-     *
-     * @return string
+     * Bootstrap3Framework constructor.
      */
-    public function getAlias(): string
+    public function __construct(AccordionUtil $accordionUtil)
     {
-        return 'bs3';
+        $this->accordionUtil = $accordionUtil;
     }
 
     public static function getIdentifier(): string
@@ -35,30 +38,9 @@ class Bootstrap3Framework extends AbstractFrontendFramework implements FrontendF
         return 'bs3';
     }
 
-    /**
-     * Return the name of the framework. Can be an translation alias.
-     *
-     * @return string
-     */
-    public function getName(): string
+    public static function getLabel(): string
     {
         return 'huh.twig.templates.framework.bs3';
-    }
-
-    /**
-     * Prepare template data at the applyTwigTemplate method
-     *
-     * @param string $templateName
-     * @param array $templateData
-     */
-    public function generate(string &$templateName, array &$templateData): void
-    {
-        $this->prepareAccordeons($templateName, $templateData);
-    }
-
-    public function compile(string &$templateName, array &$templateData, AbstractTemplate $entity): void
-    {
-        // TODO: Implement prepareData() method.
     }
 
     protected function prepareAccordeons(string &$templateName, array &$data)
@@ -66,13 +48,28 @@ class Bootstrap3Framework extends AbstractFrontendFramework implements FrontendF
         // prepare template data for bootstrap
         switch ($templateName) {
             case 'ce_accordionSingle':
-                $this->container->get('huh.utils.accordion')->structureAccordionSingle($data);
+                $this->accordionUtil->structureAccordionSingle($data);
                 break;
 
             case 'ce_accordionStart':
             case 'ce_accordionStop':
-                $this->container->get('huh.utils.accordion')->structureAccordionStartStop($data);
+                $this->accordionUtil->structureAccordionStartStop($data);
                 break;
         }
+    }
+
+    public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback
+    {
+        $templateName = $callback->getTemplateName();
+        $templateData = $callback->getData();
+        $this->prepareAccordeons($templateName, $templateData);
+        $callback->setData($templateData);
+
+        return $callback;
+    }
+
+    public function beforeRender(BeforeRenderCallback $callback): BeforeRenderCallback
+    {
+        return $callback;
     }
 }
