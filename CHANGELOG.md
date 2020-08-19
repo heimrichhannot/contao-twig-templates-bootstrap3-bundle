@@ -1,5 +1,8 @@
 # Changelog
 
+## [0.3.1] - 2020-08-19
+- fixed <php7.4 compatibility issues
+
 ## [0.3.0] - 2020-08-03
 - updated Bootstrap3Framework to implement FrontendFrameworkInterface 
 - bump minimum twig template bundle version to 1.4

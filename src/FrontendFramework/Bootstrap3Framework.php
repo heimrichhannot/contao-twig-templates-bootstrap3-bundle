@@ -22,7 +22,7 @@ class Bootstrap3Framework implements FrontendFrameworkInterface
     /**
      * @var AccordionUtil
      */
-    protected AccordionUtil $accordionUtil;
+    protected $accordionUtil;
 
 
     /**
