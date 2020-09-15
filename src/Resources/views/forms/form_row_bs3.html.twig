@@ -1,3 +1,5 @@
+{% extends "@ContaoTwigTemplates/forms/form_row.html.twig" %}
+
 {% set attributes =  attributes|default() %}
 
 {% if(arrConfiguration.explanation|default() or (hasErrors|default(false) and errorsAsString|default())) %}
@@ -24,75 +26,77 @@
     {% endif %}
 {% endif %}
 
-{% block formgroup %}
-<div class="{{ strName }} {{ groupClass }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
+{% block row %}
+    {% block formgroup %}
+    <div class="{{ strName }} {{ groupClass }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
-    {% block label %}
-        {% if(not arrConfiguration.hideLabel|default(false)) %}
-            <label id="lbl_{{ strId }}" for="ctrl_{{ strId }}">{{ strLabel|raw }}
-                {% if arrConfiguration.mandatory|default(false) %}
-                    <span class="sr-only">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
-                    <span class="mandatory">*</span>
-                {% endif %}
-            </label>
-        {% endif %}
-    {% endblock %}
-
-    {% if inputGroup|default(false) %}
-        <div class="input-group{{ ' ' ~ inputGroupClass|default('') }}">
-    {% endif %}
-
-        {% block inputPrepend %}
-            {% if hasInputPrepend|default(false) %}
-                <div class="input-group-addon">
-                    {% if arrConfiguration.inputPrepend|default() %}
-                        {{ arrConfiguration.inputPrepend|raw }}
-                    {% else %}
-                        {{ block('inputPrependInner')|raw }}
+        {% block label %}
+            {% if(not arrConfiguration.hideLabel|default(false)) %}
+                <label id="lbl_{{ strId }}" for="ctrl_{{ strId }}">{{ strLabel|raw }}
+                    {% if arrConfiguration.mandatory|default(false) %}
+                        <span class="sr-only">{{ 'huh.twig.templates.label.mandatory'|trans }}</span>
+                        <span class="mandatory">*</span>
                     {% endif %}
-                </div>
+                </label>
             {% endif %}
         {% endblock %}
 
-        {% block field %}
-        {% endblock %}
-
-        {% block inputAppend %}
-            {% if hasInputAppend|default(false) %}
-                <div class="input-group-addon">
-                    {% if arrConfiguration.inputAppend|default() %}
-                        {{ arrConfiguration.inputAppend|raw }}
-                    {% else %}
-                        {{ block('inputAppendInner')|raw }}
-                    {% endif %}
-                </div>
-            {% endif %}
-        {% endblock %}
-
-    {% if inputGroup|default(false) %}
-        </div>
-    {% endif %}
-
-    {% block feedback %}
         {% if inputGroup|default(false) %}
-            {% set formFeedbackClass = formFeedbackClass|merge(['d-block']) %}
+            <div class="input-group{{ ' ' ~ inputGroupClass|default('') }}">
         {% endif %}
 
-        <div class="{{ formFeedbackClass|join(' ') }}" id="help-block-ctrl_{{ strId }}">
-            {% block explanation %}
-                {% if(arrConfiguration.explanation|default()) %}
-                    <div class="help-block">{{ arrConfiguration.explanation }}</div>
+            {% block inputPrepend %}
+                {% if hasInputPrepend|default(false) %}
+                    <div class="input-group-addon">
+                        {% if arrConfiguration.inputPrepend|default() %}
+                            {{ arrConfiguration.inputPrepend|raw }}
+                        {% else %}
+                            {{ block('inputPrependInner')|raw }}
+                        {% endif %}
+                    </div>
                 {% endif %}
             {% endblock %}
 
-            {% block error %}
-                {% if(hasErrors|default(false) and errorsAsString|default()) %}
-                    <div class="help-block">{{ errorsAsString|raw }}</div>
+            {% block field %}
+            {% endblock %}
+
+            {% block inputAppend %}
+                {% if hasInputAppend|default(false) %}
+                    <div class="input-group-addon">
+                        {% if arrConfiguration.inputAppend|default() %}
+                            {{ arrConfiguration.inputAppend|raw }}
+                        {% else %}
+                            {{ block('inputAppendInner')|raw }}
+                        {% endif %}
+                    </div>
                 {% endif %}
             {% endblock %}
-        </div>
+
+        {% if inputGroup|default(false) %}
+            </div>
+        {% endif %}
+
+        {% block feedback %}
+            {% if inputGroup|default(false) %}
+                {% set formFeedbackClass = formFeedbackClass|merge(['d-block']) %}
+            {% endif %}
+
+            <div class="{{ formFeedbackClass|join(' ') }}" id="help-block-ctrl_{{ strId }}">
+                {% block explanation %}
+                    {% if(arrConfiguration.explanation|default()) %}
+                        <div class="help-block">{{ arrConfiguration.explanation }}</div>
+                    {% endif %}
+                {% endblock %}
+
+                {% block error %}
+                    {% if(hasErrors|default(false) and errorsAsString|default()) %}
+                        <div class="help-block">{{ errorsAsString|raw }}</div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </div>
     {% endblock %}
-</div>
 {% endblock %}
 
 

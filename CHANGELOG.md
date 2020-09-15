@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.3.2] - 2020-09-15
+- updated form_row template to extend from @ContaoTwigTemplates/forms/form_row.html.twig
+- fixed support for formhybrid subpalettes
+- added error block to form_password_bs3
+
 ## [0.3.1] - 2020-08-19
 - fixed <php7.4 compatibility issues
 
