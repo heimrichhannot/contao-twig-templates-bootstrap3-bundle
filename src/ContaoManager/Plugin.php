@@ -1,16 +1,12 @@
 <?php
-/**
- * Contao Open Source CMS
+
+/*
+ * Copyright (c) 2021 Heimrich & Hannot GmbH
  *
- * Copyright (c) 2019 Heimrich & Hannot GmbH
- *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-
-namespace HeimrichHannot\ContaoTwigTemplatesBootstrap3Bundle\ContaoManager;
-
+namespace HeimrichHannot\TwigTemplatesBootstrap3Bundle\ContaoManager;
 
 use Contao\CoreBundle\ContaoCoreBundle;
 use Contao\ManagerPlugin\Bundle\BundlePluginInterface;
@@ -18,13 +14,11 @@ use Contao\ManagerPlugin\Bundle\Config\BundleConfig;
 use Contao\ManagerPlugin\Bundle\Config\ConfigInterface;
 use Contao\ManagerPlugin\Bundle\Parser\ParserInterface;
 use Contao\ManagerPlugin\Config\ConfigPluginInterface;
-use HeimrichHannot\ContaoTwigTemplatesBootstrap3Bundle\ContaoTwigTemplatesBootstrap3Bundle;
-use HeimrichHannot\TwigTemplatesBundle\ContaoTwigTemplatesBundle;
+use HeimrichHannot\TwigTemplatesBootstrap3Bundle\HeimrichHannotTwigTemplatesBootstrap3Bundle;
 use Symfony\Component\Config\Loader\LoaderInterface;
 
 class Plugin implements BundlePluginInterface, ConfigPluginInterface
 {
-
     /**
      * Gets a list of autoload configurations for this bundle.
      *
@@ -33,9 +27,10 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
     public function getBundles(ParserInterface $parser)
     {
         return [
-            BundleConfig::create(ContaoTwigTemplatesBootstrap3Bundle::class)->setLoadAfter([
+            BundleConfig::create(HeimrichHannotTwigTemplatesBootstrap3Bundle::class)->setLoadAfter([
                 ContaoCoreBundle::class,
-                ContaoTwigTemplatesBundle::class
+                '\HeimrichHannot\TwigTemplatesBundle\ContaoTwigTemplatesBundle',
+                '\HeimrichHannot\TwigTemplatesBundle\HeimrichHannotTwigTemplatesBundle',
             ]),
         ];
     }
@@ -45,6 +40,6 @@ class Plugin implements BundlePluginInterface, ConfigPluginInterface
      */
     public function registerContainerConfiguration(LoaderInterface $loader, array $managerConfig)
     {
-        $loader->load('@ContaoTwigTemplatesBootstrap3Bundle/Resources/config/services.yml');
+        $loader->load('@HeimrichHannotTwigTemplatesBootstrap3Bundle/Resources/config/services.yml');
     }
 }

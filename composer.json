@@ -6,19 +6,19 @@
   "require": {
     "php": "^7.1",
     "contao/core-bundle": "^4.4",
-    "heimrichhannot/contao-twig-templates-bundle": "^1.4|^2.0.0-beta2",
+    "heimrichhannot/contao-twig-templates-bundle": "^2.0",
     "heimrichhannot/contao-utils-bundle": "^2.101"
   },
   "autoload": {
     "psr-4": {
-      "HeimrichHannot\\ContaoTwigTemplatesBootstrap3Bundle\\": "src/"
+      "HeimrichHannot\\TwigTemplatesBootstrap3Bundle\\": "src/"
     }
   },
   "config": {
     "preferred-install": "dist"
   },
   "extra": {
-    "contao-manager-plugin": "HeimrichHannot\\ContaoTwigTemplatesBootstrap3Bundle\\ContaoManager\\Plugin",
+    "contao-manager-plugin": "HeimrichHannot\\TwigTemplatesBootstrap3Bundle\\ContaoManager\\Plugin",
     "foxy": true
   }
 }
