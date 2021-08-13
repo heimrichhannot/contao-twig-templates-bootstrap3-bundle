@@ -1,6 +1,9 @@
 # Changelog
 
-## [1.0.0] - 2021-08-13
+## [1.0.1] - 2021-08-13
+Same as 1.0.0
+
+## [1.0.0] - 2021-08-13 [YANKED]
 - Changed: renamed bundle class from `ContaoTwigTemplatesBootstrap3Bundle` to `HeimrichHannotTwigTemplatesBootstrap3Bundle`
 - Changed: renamed bundle namespace from `HeimrichHannot\ContaoTwigTemplatesBootstrap3Bundle` to `HeimrichHannot\TwigTemplatesBootstrap3Bundle`
 - Changed: minimum twig templates bundle version raised to 2.0
