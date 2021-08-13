@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0] - 2021-08-13
+- Changed: renamed bundle class from `ContaoTwigTemplatesBootstrap3Bundle` to `HeimrichHannotTwigTemplatesBootstrap3Bundle`
+- Changed: renamed bundle namespace from `HeimrichHannot\ContaoTwigTemplatesBootstrap3Bundle` to `HeimrichHannot\TwigTemplatesBootstrap3Bundle`
+- Changed: minimum twig templates bundle version raised to 2.0
+- Changed: Updated translations
+- Removed: .html5 proxy templates
+- Fixed: multiple selects not working
+
 ## [0.3.2] - 2020-09-15
 - updated form_row template to extend from @ContaoTwigTemplates/forms/form_row.html.twig
 - fixed support for formhybrid subpalettes

@@ -1,16 +1,12 @@
 <?php
-/**
- * Contao Open Source CMS
+
+/*
+ * Copyright (c) 2021 Heimrich & Hannot GmbH
  *
- * Copyright (c) 2019 Heimrich & Hannot GmbH
- *
- * @author  Thomas Körner <t.koerner@heimrich-hannot.de>
- * @license http://www.gnu.org/licences/lgpl-3.0.html LGPL
+ * @license LGPL-3.0-or-later
  */
 
-
-namespace HeimrichHannot\ContaoTwigTemplatesBootstrap3Bundle\FrontendFramework;
-
+namespace HeimrichHannot\TwigTemplatesBootstrap3Bundle\FrontendFramework;
 
 use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
@@ -23,7 +19,6 @@ class Bootstrap3Framework implements FrontendFrameworkInterface
      * @var AccordionUtil
      */
     protected $accordionUtil;
-
 
     /**
      * Bootstrap3Framework constructor.
@@ -43,21 +38,6 @@ class Bootstrap3Framework implements FrontendFrameworkInterface
         return 'huh.twig.templates.framework.bs3';
     }
 
-    protected function prepareAccordeons(string &$templateName, array &$data)
-    {
-        // prepare template data for bootstrap
-        switch ($templateName) {
-            case 'ce_accordionSingle':
-                $this->accordionUtil->structureAccordionSingle($data);
-                break;
-
-            case 'ce_accordionStart':
-            case 'ce_accordionStop':
-                $this->accordionUtil->structureAccordionStartStop($data);
-                break;
-        }
-    }
-
     public function prepare(PrepareTemplateCallback $callback): PrepareTemplateCallback
     {
         $templateName = $callback->getTemplateName();
@@ -71,5 +51,22 @@ class Bootstrap3Framework implements FrontendFrameworkInterface
     public function beforeRender(BeforeRenderCallback $callback): BeforeRenderCallback
     {
         return $callback;
+    }
+
+    protected function prepareAccordeons(string &$templateName, array &$data)
+    {
+        // prepare template data for bootstrap
+        switch ($templateName) {
+            case 'ce_accordionSingle':
+                $this->accordionUtil->structureAccordionSingle($data);
+
+                break;
+
+            case 'ce_accordionStart':
+            case 'ce_accordionStop':
+                $this->accordionUtil->structureAccordionStartStop($data);
+
+                break;
+        }
     }
 }

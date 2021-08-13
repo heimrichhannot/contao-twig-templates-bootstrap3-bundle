@@ -9,12 +9,12 @@
  */
 
 
-namespace HeimrichHannot\ContaoTwigTemplatesBootstrap3Bundle;
+namespace HeimrichHannot\TwigTemplatesBootstrap3Bundle;
 
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class ContaoTwigTemplatesBootstrap3Bundle extends Bundle
+class HeimrichHannotTwigTemplatesBootstrap3Bundle extends Bundle
 {
 
 }
