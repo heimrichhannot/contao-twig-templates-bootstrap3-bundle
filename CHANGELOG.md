@@ -1,5 +1,8 @@
 # Changelog
 
+## [Unreleased] - 2022-01-03
+- Changed: inputGroupClass in form_row can now be set as widget attribute (e.g. from dca oder getAttributesFromDca hook)
+
 ## [1.0.1] - 2021-08-13
 Same as 1.0.0
 

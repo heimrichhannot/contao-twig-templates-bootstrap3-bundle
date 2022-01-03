@@ -16,6 +16,13 @@
     {% set inputGroup = true %}
 {% endif %}
 
+{% if inputGroup|default(false) and (arrConfiguration.inputGroupClass|default or inputGroupClass|default) %}
+    {% if arrConfiguration.inputGroupClass|default %}
+        {% set inputGroupClass = arrConfiguration.inputGroupClass %}
+    {% endif %}
+    {% set inputGroupClass = ' ' ~ inputGroupClass %}
+{% endif %}
+
 {% set formFeedbackClass = formFeedbackClass|default({})|merge(['form-feedback']) %}
 {% set groupClass = groupClass|default(arrConfiguration.groupClass|default('form-group')) %}
 
@@ -27,6 +34,7 @@
 {% endif %}
 
 {% block row %}
+
     {% block formgroup %}
     <div class="{{ strName }} {{ groupClass }} {{ strPrefix }}{% if(arrConfiguration.invisible|default(false)) %} invisible{% endif %}">
 
@@ -42,7 +50,7 @@
         {% endblock %}
 
         {% if inputGroup|default(false) %}
-            <div class="input-group{{ ' ' ~ inputGroupClass|default('') }}">
+            <div class="input-group{{ inputGroupClass|default('') }}">
         {% endif %}
 
             {% block inputPrepend %}
