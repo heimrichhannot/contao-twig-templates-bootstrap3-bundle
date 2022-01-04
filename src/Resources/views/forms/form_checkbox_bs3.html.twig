@@ -33,7 +33,7 @@
             {% if not arrConfiguration.inline|default(false) %}
                 <div class="checkbox">
             {% endif %}
-                    <label class="{% if arrConfiguration.inline|default(false) %}checkbox-inline{% endif %}" for="opt_{{ strId }}_{{ counter }}">
+                    <label {% if arrConfiguration.inline|default(false) %}class="checkbox-inline"{% endif %} for="opt_{{ strId }}_{{ counter }}">
                         <input class="{% if(hasErrors|default(false)) %} is-invalid{% endif %}" name="{{ strName }}{% if arrConfiguration.multiple|default %}[]{% endif %}" type="checkbox" value="{{ option.value }}"{{ option.checked }} id="opt_{{ strId }}_{{ counter }}" {{ attributes|default()|raw }} {% if arrConfiguration.disabled|default(false) %} disabled{% endif %} {{ option.attributes }}>
                         {{ option.label|raw }}
                     </label>
