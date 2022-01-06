@@ -1,7 +1,8 @@
 # Changelog
 
-## [Unreleased] - 2022-01-03
+## [1.1.0] - 2022-01-03
 - Changed: inputGroupClass in form_row can now be set as widget attribute (e.g. from dca oder getAttributesFromDca hook)
+- Fixed: empty class attribute in checkbox label if checkbox not inline
 
 ## [1.0.1] - 2021-08-13
 Same as 1.0.0
