@@ -7,7 +7,7 @@
     "php": "^7.2",
     "contao/core-bundle": "^4.4",
     "heimrichhannot/contao-twig-templates-bundle": "^2.0",
-    "heimrichhannot/contao-utils-bundle": "^2.101"
+    "heimrichhannot/contao-utils-bundle": "^2.208"
   },
   "autoload": {
     "psr-4": {

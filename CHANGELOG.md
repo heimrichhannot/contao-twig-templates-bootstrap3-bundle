@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.1.1] - 2022-01-18
+- Fixed: nested accordions not working properly (raised utils-bundle dependency)
+
 ## [1.1.0] - 2022-01-03
 - Changed: inputGroupClass in form_row can now be set as widget attribute (e.g. from dca oder getAttributesFromDca hook)
 - Fixed: empty class attribute in checkbox label if checkbox not inline

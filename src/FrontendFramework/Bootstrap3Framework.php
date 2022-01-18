@@ -12,20 +12,27 @@ use HeimrichHannot\TwigTemplatesBundle\Event\BeforeRenderCallback;
 use HeimrichHannot\TwigTemplatesBundle\Event\PrepareTemplateCallback;
 use HeimrichHannot\TwigTemplatesBundle\FrontendFramework\FrontendFrameworkInterface;
 use HeimrichHannot\UtilsBundle\Accordion\AccordionUtil;
+use HeimrichHannot\UtilsBundle\Util\Utils;
 
 class Bootstrap3Framework implements FrontendFrameworkInterface
 {
     /**
      * @var AccordionUtil
      */
-    protected $accordionUtil;
+    protected     $accordionUtil;
+
+    /**
+     * @var Utils
+     */
+    private $utils;
 
     /**
      * Bootstrap3Framework constructor.
      */
-    public function __construct(AccordionUtil $accordionUtil)
+    public function __construct(AccordionUtil $accordionUtil, Utils $utils)
     {
         $this->accordionUtil = $accordionUtil;
+        $this->utils = $utils;
     }
 
     public static function getIdentifier(): string
@@ -64,8 +71,7 @@ class Bootstrap3Framework implements FrontendFrameworkInterface
 
             case 'ce_accordionStart':
             case 'ce_accordionStop':
-                $this->accordionUtil->structureAccordionStartStop($data);
-
+                $this->utils->accordion()->structureAccordionStartStop($data);
                 break;
         }
     }
