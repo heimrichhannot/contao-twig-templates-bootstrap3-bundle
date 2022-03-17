@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.0] - 2022-03-17
+- Added: php 8 support
+
 ## [1.1.1] - 2022-01-18
 - Fixed: nested accordions not working properly (raised utils-bundle dependency)
 
