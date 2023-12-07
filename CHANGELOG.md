@@ -1,5 +1,8 @@
 # Changelog
 
+## [1.2.0] - 2023-12-07
+- Fixed: checkbox template for form generator
+
 ## [1.2.0] - 2022-03-17
 - Added: php 8 support
 

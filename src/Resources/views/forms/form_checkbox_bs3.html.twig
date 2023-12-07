@@ -29,6 +29,12 @@
     <div class="{{ optionGroupClass }}">
     {% for option in arrOptions %}
         {% set counter = ( counter | default(0) ) + 1 %}
+
+        {#- Fix for form generator #}
+        {%- if '[]' in option.name  %}
+            {% set arrConfiguration = arrConfiguration|merge({'multiple': true}) %}
+        {% endif -%}
+
         {% block option %}
             {% if not arrConfiguration.inline|default(false) %}
                 <div class="checkbox">
